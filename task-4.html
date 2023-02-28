@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Michał Murawski</title>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h3>Michał Murawski<img id="logo-edu" src="https://www.teb.pl/img/logo-edu.png"></h3>
+    </header>
+    <div class="input">
+        <p>Sprawdź swój wiek</p>
+        <p>( poniżej podaj datę urodzenia )</p>
+        <input type="date" id="inputDate">
+        <button onclick="age()">Sprawdź</button>
+        <p id="result"></p>
+
+        <script>
+            function age() {
+                let inputDate = document.getElementById('inputDate').value;
+                var unixDate = Date.parse(inputDate);
+                var {actualYear, actualMonth, actualDay} = getActualDate();
+                var unixActualDate = Date.parse(actualYear, actualMonth, actualDay);
+                var yourAge = getAge(unixActualDate, unixDate);
+                if (yourAge === 1) {
+                    document.getElementById('result').innerHTML = 'Twój wiek to ' + yourAge + ' rok';
+                } else if (((yourAge === 2) || (yourAge === 3) || (yourAge === 4))
+                    || (((((yourAge - 2) % 10 === 0) || ((yourAge - 3) % 10 === 0) || ((yourAge - 4)) % 10 === 0))
+                        && (yourAge >= 20))) {
+                    document.getElementById('result').innerHTML = 'Twój wiek to ' + yourAge + ' lata';
+                } else {
+                    document.getElementById('result').innerHTML = 'Twój wiek to ' + yourAge + ' lat';
+                }
+            }
+
+            /**
+             *
+             * @return {{actualMonth: number, actualYear: number, actualDay: number}}
+             */
+            function getActualDate() {
+                var date = new Date();
+                var actualYear = date.getFullYear();
+                var actualMonth = date.getMonth() + 1;
+                var actualDay = date.getDay() + 11;
+                return {actualYear, actualMonth, actualDay};
+            }
+
+            /**
+             *
+             * @param unixActualDate
+             * @param unixDate
+             * @return {number}
+             */
+            function getAge(unixActualDate, unixDate) {
+                var calculateUnixAge = unixActualDate - unixDate;
+                var calculateAge = (calculateUnixAge / (365 * 24 * 60 * 60 * 1000)) + 1;
+                var parsAge = parseInt(calculateAge);
+                return parsAge;
+            }
+        </script>
+    </div>
+</div>
+</body>
+</html>

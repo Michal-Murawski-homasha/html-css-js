@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    font-family: Arial;
+    color: white;
+}
+.container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 98vw;
+}
+header {
+    /*margin: 0 1%;*/
+}
+h3 {
+    border: outset;
+    border-color: darkgoldenrod;
+    padding: 2% 10% 5%;
+}
+h3:hover {
+    color: darkgoldenrod;
+}
+#logo-edu {
+    float: right;
+    margin-left: 10%;
+}
+#js-logo {
+    display: block;
+    margin: auto;
+    /*margin-right: auto;*/
+    width: 200px;
+}
+#js-logo img {
+    position: relative;
+    margin-top: 50%;
+    width: 177px;
+    height: 200px;
+}
+footer {
+    position: fixed;
+    width: 98vw;
+    bottom: 1%;
+}
+.links {
+    display: flex;
+}
+a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+}
+a:hover {
+    color: black;
+    background-color: white;
+}
+a:focus {
+    container: black;
+    background-color: red;
+}
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.input input {
+    margin: 2%;
+    padding: 2%;
+    border-style: solid;
+    border-radius: 5px;
+}
+.input button {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+    padding: 2%;
+}
+.input p {
+    text-align: center;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Michał Murawski</title>
+</head>
+<body onload="actualDate()">
+<div class="container">
+    <header>
+        <h3>Michał Murawski<img id="logo-edu" src="https://www.teb.pl/img/logo-edu.png"></h3>
+    </header>
+    <div class="input">
+        <p>Aktualna data i czas</p>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function actualDateAndTime() {
+            var {date, localDate, time, actualYear, actualMonth, actualDay, actualHours, actualMinutes, actualSeconds} = getActualDateTime();
+            const days = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"];
+            document.getElementById('result').innerHTML = date + ' | ' + actualYear + '-' + actualMonth + '-' + actualDay + ' ( '
+                + days[date.getDay()] + ' ) ' + ' / ' + actualHours + ':' + actualMinutes + ':' + actualSeconds;
+        }
+
+        /**
+         *
+         * @return {{date: Date, actualMonth: number, actualYear: number, actualMinutes: number, actualDay: number,
+         * actualHours: number, actualSeconds: number}}
+         */
+        function getActualDateTime() {
+            var date = new Date();
+            var localDate = date.getDate();
+            var time = date.getTime();
+            var actualYear = date.getFullYear();
+            var actualMonth = date.getMonth();
+            if (actualMonth < 10) actualMonth = "0" + actualMonth;
+            var actualDay = date.getDay();
+            if (actualDay < 10) actualDay = "0" + actualDay;
+            var actualHours = date.getHours();
+            if (actualHours < 10) actualHours = "0" + actualHours;
+            var actualMinutes = date.getMinutes();
+            if (actualMinutes < 10) actualMinutes = "0" + actualMinutes;
+            var actualSeconds = date.getSeconds();
+            if (actualSeconds < 10) actualSeconds = "0" + actualSeconds;
+            return {date, localDate, time, actualYear, actualMonth, actualDay, actualHours, actualMinutes, actualSeconds};
+        }
+
+        setInterval('actualDateAndTime()', 1000);
+    </script>
+</div>
+</body>
+</html>

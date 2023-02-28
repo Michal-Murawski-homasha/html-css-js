@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Michał Murawski</title>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h3>Michał Murawski<img id="logo-edu" src="https://www.teb.pl/img/logo-edu.png"></h3>
+    </header>
+    <div class="input">
+        <p>Oblicz pole trójkąta</p>
+        <input type="number" id="numA" placeholder="Podaj długość a">
+        <input type="number" id="numB" placeholder="Podaj długość b">
+        <input type="number" id="numC" placeholder="Podaj długość c">
+        <input type="number" id="numH" placeholder="Podaj wysokość">
+        <button onclick="areaTriangle()">Sprawdź</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function areaTriangle() {
+            let a = document.getElementById('numA').value;
+            let b = document.getElementById('numB').value;
+            let c = document.getElementById('numC').value;
+            let h = document.getElementById('numH').value;
+
+            const __ret = replaced(a, b, c, h);
+            a = __ret.a;
+            b = __ret.b;
+            c = __ret.c;
+            h = __ret.h;
+
+            if ((a > 0) && (b > 0) && (c > 0) && (h < 1)) {
+                areaTABC = areaTriangleABC(a, b, c);
+                document.getElementById('result').innerHTML = 'Pole powierzchni trójkąta wyn: ' + areaTABC.toFixed(2);
+            } else if ((a > 0) && (h > 0)) {
+                areaTAH = (0.5 * a * h);
+                document.getElementById('result').innerHTML = 'Pole powierzchni trójkąta wyn: ' + areaTAH;
+            } else {
+                document.getElementById('result').innerHTML = 'Podaj długość 3 boków (A, B, C)<br>lub<br>bok A i wysokość H';
+
+            }
+        }
+
+        /**
+         *
+         * @param a
+         * @param b
+         * @param c
+         * @param h
+         * @return {{a: string, b: string, c: string, h: string}}
+         */
+        function replaced(a, b, c, h) {
+            a = a.replace(',', '.');
+            a = a.replaceAll(' ', '');
+            b = b.replace(',', '.');
+            b = b.replaceAll(' ', '');
+            c = c.replace(',', '.');
+            c = c.replaceAll(' ', '');
+            h = h.replace(',', '.');
+            h = h.replaceAll(' ', '');
+            return {a, b, c, h};
+        }
+
+        /**
+         *
+         * @param a
+         * @param b
+         * @param c
+         * @return {number}
+         */
+        function areaTriangleABC(a, b, c) {
+            halfP = ((parseFloat(a) + parseFloat(b) + parseFloat(c)) / 2);
+            areaTABC = Math.sqrt(parseFloat(halfP) * (parseFloat(halfP) - parseFloat(a))
+                * (parseFloat(halfP) - parseFloat(b))
+                * (parseFloat(halfP) - parseFloat(c)));
+            return areaTABC;
+        }
+    </script>
+</div>
+</body>
+</html>

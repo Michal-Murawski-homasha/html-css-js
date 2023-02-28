@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Michał Murawski</title>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h3>Michał Murawski<img id="logo-edu" src="https://www.teb.pl/img/logo-edu.png"></h3>
+    </header>
+    <div class="input">
+        <input type="text" id="typeLive" placeholder="Tu możesz wpisać dowolny tekst" onkeyup="getTypeLive()">
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function getTypeLive() {
+            var text = document.getElementById('typeLive').value;
+            document.getElementById('result').innerHTML = text;
+        }
+    </script>
+</div>
+</body>
+</html>
